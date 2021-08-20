@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="CovidApp.Pages.MainPage">
+
+    <StackLayout Padding="10">
+        <Frame>
+            <SearchBar HorizontalOptions="Center"
+                       Placeholder="Search"
+                       SearchCommand="{Binding SearchCommand}"
+                       Text="{Binding Filter}"/>
+        </Frame>
+        
+        <CollectionView ItemsSource="{Binding ArticleList}"
+                        SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="2"
+                                 VerticalItemSpacing="20"
+                                 HorizontalItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="5"
+                           CornerRadius="10"
+                           BackgroundColor="#EBEDEF"
+                           IsClippedToBounds="False">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="{Binding CountryCountry}"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="2"
+                                   HorizontalOptions="Center"
+                                   FontFamily="Anton"
+                                   FontSize="20"/>
+
+                            <Label Text="New Confirmed"
+                                   Grid.Column="0"
+                                   Grid.Row="1" 
+                                   HorizontalOptions="Center"
+                                   FontFamily="Anton"
+                                   FontSize="15"/>
+                            
+                            <Label Text="{Binding NewConfirmed}"
+                                   Grid.Column="1"
+                                   Grid.Row="1"
+                                   HorizontalOptions="Center"
+                                   FontFamily="Anton"
+                                   FontSize="15"/>
+                            
+                            <Label Text="Total Confirmed"
+                                   Grid.Column="0"
+                                   Grid.Row="2"
+                                   HorizontalOptions="Center"
+                                   FontFamily="Anton"
+                                   FontSize="15"/>
+
+                            <Label Text="{Binding TotalConfirmed}"
+                                   Grid.Column="1"
+                                   Grid.Row="2"
+                                   HorizontalOptions="Center"
+                                   FontFamily="Anton"
+                                   FontSize="15"/>
+
+                            <Label Text="New Deaths"
+                                   Grid.Column="0"
+                                   Grid.Row="3"
+                                   HorizontalOptions="Center"
+                                   FontFamily="Anton"
+                                   FontSize="15"/>
+
+                            <Label Text="{Binding NewDeaths}"
+                                   Grid.Column="1"
+                                   Grid.Row="3"
+                                   HorizontalOptions="Center"
+                                   FontFamily="Anton"
+                                   FontSize="15"/>
+                            
+                            <ImageButton Source="next.png"
+                                         Grid.Column="0"
+                                         Grid.Row="4"
+                                         Grid.ColumnSpan="2"
+                                         Aspect="AspectFill"
+                                         HorizontalOptions="Center"
+                                         VerticalOptions="CenterAndExpand"
+                                         Command="{Binding ClicCommand}"/>
+                        </Grid>
+                        
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
